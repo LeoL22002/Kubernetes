@@ -1,10 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod2
+spec:
+  containers:
+    - name: node-app2
+      image: leo22002/pod2:latest
+      ports:
+        - containerPort: 3001
+      resources:
+        limits:
+          cpu: "0.5"  
+          memory: "256Mi" 
+---
+
 # pod2/pod2-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pod2-deployment
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: pod2
@@ -14,7 +30,13 @@ spec:
         app: pod2
     spec:
       containers:
-      - name: node-app
+      - name: node-app2
         image: leo22002/pod2:latest
         ports:
-        - containerPort: 3000
+        - containerPort: 3001
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "0.5"
+      
+        

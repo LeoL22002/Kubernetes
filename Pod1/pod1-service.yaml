@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pod1-service
+spec:
+  selector:
+    app: pod1 
+  ports:
+    - protocol: TCP
+      port: 80  # Puerto del Service
+      targetPort: 3000  # Puerto del pod
+  type: LoadBalancer

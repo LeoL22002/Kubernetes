@@ -1,0 +1,4 @@
+minikube service pod2-deployment-784b47bfdb-h6f55
+minikube service pod1-service
+kubectl apply -f pod1-deployment.yaml
+kubectl delete pod NOMBRE_DEL_POD
